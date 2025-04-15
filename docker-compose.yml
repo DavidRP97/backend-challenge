@@ -1,0 +1,39 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ****
+      MONGO_INITDB_DATABASE: app_db
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network  
+
+  challenge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: challenge-backend
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+      - rabbitmq
+    environment:
+      - MongoDB__ConnectionString=****
+      - ServiceBus__ConnectionString=****
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
