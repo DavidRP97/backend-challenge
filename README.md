@@ -24,10 +24,11 @@ API backend para gerenciamento de:
 ```bash
 git clone https://github.com/DavidRP97/challenge-backend.git
 ```
-2. Inicie os containers:
+2. Defina as váriaveis de ambiente no docker compose:
+
+3. Inicie os containers:
 ```bash
 docker-compose up --build
 ```
-
-3. Acesse a API:
+4. Acesse a API:
 http://localhost:8080/swagger
