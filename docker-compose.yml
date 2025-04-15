@@ -4,8 +4,8 @@ services:
     container_name: mongodb
     restart: unless-stopped
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ****
+      MONGO_INITDB_ROOT_USERNAME: 
+      MONGO_INITDB_ROOT_PASSWORD: 
       MONGO_INITDB_DATABASE: app_db
     volumes:
       - mongodb_data:/data/db
@@ -22,12 +22,11 @@ services:
     restart: unless-stopped
     depends_on:
       - mongodb
-      - rabbitmq
     environment:
-      - MongoDB__ConnectionString=****
-      - ServiceBus__ConnectionString=****
+      - MongoDB__ConnectionString=mongodb://<USER>:<PASSWORD>@mongodb:27017/?authSource=admin
+      - ServiceBus__ConnectionString=
     ports:
-      - "8080:80"
+      - "8080:8080"
     networks:
       - app-network
 
