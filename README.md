@@ -22,7 +22,7 @@ API backend para gerenciamento de:
 ### Passo a Passo
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-repositorio/challenge-backend.git
+git clone https://github.com/DavidRP97/challenge-backend.git
 ```
 2. Inicie os containers:
 ```bash
